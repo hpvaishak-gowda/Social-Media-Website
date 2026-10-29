@@ -69,7 +69,7 @@ def logoutt(request):
 def upload(request):
     if request.method == 'POST':
         user  = request.user.username
-        image = request.FILES.get('image-upload')
+        image = request.FILES.get('image_upload')
         caption = request.POST['caption']
         new_post = Post.objects.create(user = user,image = image,caption = caption)
         new_post.save()
@@ -77,6 +77,28 @@ def upload(request):
 
     else:
         return redirect ('/')
+
+# def upload(request):
+#     if request.method == 'POST':
+#         user = request.user.username
+#         image = request.FILES.get('image_upload')
+#         caption = request.POST.get('caption', '')
+
+#         if not image:
+#             print("No image received from the form.")
+#             return redirect('/')
+
+#         post = Post.objects.create(
+#             user=user,
+#             image=image,
+#             caption=caption
+#         )
+
+#         print("Saved image:", post.image.name)
+
+#         return redirect('/')
+
+#     return redirect('/')
 
 
 def home(request):
